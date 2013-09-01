@@ -38,29 +38,19 @@ Bundle 'greyblake/vim-preview'
 Bundle 'jpo/vim-railscasts-theme'
 " F11全屏, F6 Open
 Bundle 'xolox/vim-shell'
-" make -f make_gcc.mak
 Bundle 'Shougo/vimproc'
 " 需要先安装vimproc
 Bundle 'Shougo/vimshell'
-" Bundle 'vimim/vimim'
 
-" vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'taglist.vim'
 Bundle 'Specky'
 Bundle 'matchit.zip'
-" map了<lead>r，与rspec冲突
 Bundle 'Mark--Karkat'
 Bundle 'bufexplorer.zip'
 Bundle 'grep.vim'
-" Bundle 'AutoClose'
 Bundle 'ZoomWin'
-" Bundle 'GoogleReader.vim'
-" Bundle 'dbext.vim'
-
-" non github repos
-Bundle 'git://git.wincent.com/command-t.git'
 
 " VUNDLE END
 " ==========
@@ -95,30 +85,6 @@ set termencoding=utf-8
 " Load matchit (% to bounce from do to end, etc.)
 runtime! macros/matchit.vim
 
-""augroup myfiletypes
-""" Clear old autocmds in group
-""autocmd!
-""" autoindent with two spaces, always expand tabs
-"autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
-""augroup END
-""noremap <silent> <F11> :cal VimCommanderToggle()<CR>
-
-" specky是一个为rspec测试提供方便的工具
-let g:speckyBannerKey = "<leader>rb"
-let g:speckyQuoteSwitcherKey = "<leader>r'"
-let g:speckyRunRdocKey = "<leader>rd"
-let g:speckySpecSwitcherKey = "<leader>rx"
-let g:speckyRunSpecKey = "<leader>rs"
-"let g:speckyRunSpecCmd = "spec -fs -r loadpath.rb"
-let g:speckyRunSpecCmd = "spec -fs -c"
-let g:speckyRunRdocCmd = "fri -L -f plain"
-let g:speckyWindowType = 1
-
-"" viki 用wiki的格式来记录信息的工具
-"let g:vikiNameSuffix=".viki"
-"let g:vikiUseParentSuffix = 1
-"autocmd! BufRead,BufNewFile *.viki set filetype=viki
-
 "" 快速查找
 noremap <silent> <leader>ff :FufFile!<CR>
 noremap <silent> <leader>fa :FufCoverageFile!<CR>
@@ -127,7 +93,6 @@ noremap <silent> <leader>fd :FufDir!<CR>
 noremap <silent> <leader>fm :FufMruFile!<CR>
 noremap <silent> <leader>fw :FufFileWithCurrentBufferDir!<CR>
 noremap <silent> <leader>fc :FufMruCmd!<CR>
-
 " 文件夹树和tag列表以及画图工具
 noremap <silent> <leader>tt :NERDTreeToggle<CR>
 noremap <silent> <leader>tl :Tlist<CR>
@@ -136,7 +101,6 @@ noremap <silent>nf :NERDTreeFind<CR>
 
 " sudo apt-get install ack-grep
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-" let g:SuperTabDefaultCompletionType = "context"
 " let g:SuperTabContextDefaultCompletionType = "<c-n>"
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
@@ -149,36 +113,15 @@ let g:ctrlp_max_height = 30
 "
 " CTRL-P END
 
-" Tabularize {
-"if exists(":Tabularize")
-    nmap <Leader>a= :Tabularize /=<CR>
-    vmap <Leader>a= :Tabularize /=<CR>
-"endif
-" }
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
 
-" Fugitive {
 nnoremap <silent> <leader>gs :Gstatus<CR>
 nnoremap <silent> <leader>gd :Gdiff<CR>
 nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent>gb :Gblame<CR>
 nnoremap <silent> <leader>gl :Glog<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
-" }
-
-"" 使用空格翻页
-"" nnoremap <silent> <space> <C-F>
-"
-"" 当处于wrap模式时，让通常的操作键作用于视觉上的行
-"" 只有在set wrap? == 'nowrap' 的情况下才适用
-""nnoremap <silent> j gj
-""nnoremap <silent> k gk
-""nnoremap <silent> 0 g0
-""nnoremap <silent> $ g$
-""nnoremap <silent> ^ g^
-"
-"augroup mkd
-"  autocmd BufRead *.mkd,*.markdown set ai formatoptions=tcroqn2 comments=n:>
-"augroup END
 
 " 自己添加的运行ruby指令
 let g:runRubyKey = "<leader>rr"
@@ -186,22 +129,5 @@ let g:toggleRubyCommentKey = "<leader>rc"
 
 let g:Powerline_symbols = 'fancy'
 
-"" txtbrowser
-"au BufRead,BufNewFile *.txt setlocal ft=txt
-"
-"" vimim begin
-""
-"" 只有在输入完按空格才显示输入法
-"" let g:vimim_static_input_style = 2
-"" let g:vimim_static_input_style = 0
-"
-"" 为-1时不调用云输入法
-"" let g:vimim_cloud_sogou = -1
-"" 5个字符以上查找搜狗
-"let g:vimim_cloud_sogou = 5
-"
-"" 每打多少个词后存盘
-"let g:vimim_chinese_frequency = 20
-"
 "" vimim end
 colorscheme railscasts
