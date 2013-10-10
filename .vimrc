@@ -37,6 +37,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'greyblake/vim-preview'
 Bundle 'jpo/vim-railscasts-theme'
 " F11全屏, F6 Open
+Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
 Bundle 'Shougo/vimproc'
 " 需要先安装vimproc
@@ -51,6 +52,9 @@ Bundle 'Mark--Karkat'
 Bundle 'bufexplorer.zip'
 Bundle 'grep.vim'
 Bundle 'ZoomWin'
+
+" slim syntax
+" Bundle 'slim-template/vim-slim'
 
 " VUNDLE END
 " ==========
@@ -98,6 +102,10 @@ noremap <silent> <leader>tt :NERDTreeToggle<CR>
 noremap <silent> <leader>tl :Tlist<CR>
 noremap <silent> <leader>ts :call ToggleSketch()<CR>
 noremap <silent>nf :NERDTreeFind<CR>
+map <F2> :NERDTreeFind<CR>
+map <F4> :q<CR>
+map <F8> :NERDTreeToggle<CR>
+map <F9> :w<CR>
 
 " sudo apt-get install ack-grep
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -123,11 +131,6 @@ nnoremap <silent>gb :Gblame<CR>
 nnoremap <silent> <leader>gl :Glog<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
 
-" 自己添加的运行ruby指令
-let g:runRubyKey = "<leader>rr"
-let g:toggleRubyCommentKey = "<leader>rc"
-
 let g:Powerline_symbols = 'fancy'
 
 "" vimim end
-colorscheme railscasts
