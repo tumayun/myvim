@@ -2,10 +2,15 @@
 " ============
 
 set nocompatible      " We're running Vim, not Vi!
-filetype off
+set tabstop=2 shiftwidth=2 softtabstop=2
+filetype plugin indent on
+autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+
+" https://github.com/slim-template/vim-slim
+" call pathogen#infect()
 
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
@@ -16,15 +21,15 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails.git'
 Bundle 'ervandew/supertab'
-" Bundle 'msanders/snipmate.vim'
-Bundle 'Lokaltog/vim-powerline'
+" Bundle 'Lokaltog/powerline'
+" Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
 " 希望换成更好的注释工具
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-vividchalk'
-Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-rake'
@@ -34,7 +39,6 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'godlygeek/tabular'
 Bundle 'majutsushi/tagbar'
-Bundle 'greyblake/vim-preview'
 Bundle 'jpo/vim-railscasts-theme'
 " F11全屏, F6 Open
 Bundle 'xolox/vim-misc'
@@ -45,16 +49,20 @@ Bundle 'Shougo/vimshell'
 
 Bundle 'L9'
 Bundle 'FuzzyFinder'
-Bundle 'taglist.vim'
-Bundle 'Specky'
 Bundle 'matchit.zip'
-Bundle 'Mark--Karkat'
 Bundle 'bufexplorer.zip'
 Bundle 'grep.vim'
-Bundle 'ZoomWin'
+Bundle 'rizzatti/dash.vim'
 
-" slim syntax
-" Bundle 'slim-template/vim-slim'
+" markdown
+Bundle 'plasticboy/vim-markdown'
+Bundle 'moll/vim-node'
+Bundle 'jamescarr/snipmate-nodejs'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'kchmck/vim-coffee-script'
+
+" emmet for vim
+Bundle "mattn/emmet-vim"
 
 " VUNDLE END
 " ==========
@@ -73,8 +81,7 @@ set expandtab
 set ruler
 set nobackup
 set showcmd
-"set cursorline
-set tabstop=2 shiftwidth=2 softtabstop=2
+set cursorline
 set list
 set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
 set laststatus=2
@@ -86,8 +93,6 @@ set encoding=utf-8
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1 " 如果你要打开的文件编码不在此列，那就添加进去
 set termencoding=utf-8
 
-" Load matchit (% to bounce from do to end, etc.)
-runtime! macros/matchit.vim
 
 "" 快速查找
 noremap <silent> <leader>ff :FufFile!<CR>
@@ -99,16 +104,12 @@ noremap <silent> <leader>fw :FufFileWithCurrentBufferDir!<CR>
 noremap <silent> <leader>fc :FufMruCmd!<CR>
 " 文件夹树和tag列表以及画图工具
 noremap <silent> <leader>tt :NERDTreeToggle<CR>
-noremap <silent> <leader>tl :Tlist<CR>
-noremap <silent> <leader>ts :call ToggleSketch()<CR>
 noremap <silent>nf :NERDTreeFind<CR>
 map <F2> :NERDTreeFind<CR>
-map <F4> :q<CR>
-map <F8> :NERDTreeToggle<CR>
-map <F9> :w<CR>
+nmap <F8> :TagbarToggle<CR>
 
-" sudo apt-get install ack-grep
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+" brew install ack
+let g:ackprg="ack -H --nocolor --nogroup --column"
 " let g:SuperTabContextDefaultCompletionType = "<c-n>"
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
@@ -124,13 +125,16 @@ let g:ctrlp_max_height = 30
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 
-nnoremap <silent> <leader>gs :Gstatus<CR>
-nnoremap <silent> <leader>gd :Gdiff<CR>
-nnoremap <silent> <leader>gc :Gcommit<CR>
-nnoremap <silent>gb :Gblame<CR>
-nnoremap <silent> <leader>gl :Glog<CR>
-nnoremap <silent> <leader>gp :Git push<CR>
+" slim
+nnoremap <silent> <leader>ms :call pathogen#infect()<CR>
 
-let g:Powerline_symbols = 'fancy'
+" vim-ragtag
+let g:ragtag_global_maps = 1
 
+let Tlist_Ctags_Cmd = '/usr/local/opt/ctags/bin/ctags'
+
+" Dash
+:nmap <silent> <leader>d <Plug>DashSearch
+
+" au FileType javascript call JavaScriptFold()
 "" vimim end
